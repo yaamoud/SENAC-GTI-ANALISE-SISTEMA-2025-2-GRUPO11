@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PedalaComigo — Assistente</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{--card:#fff;--border:#e5e7eb;--muted:#64748b;--ink:#1e293b}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(1200px 800px at 80% -10%, #e8fff5, transparent 50%), linear-gradient(135deg,#f5fffb,#eafff3); display:flex; align-items:center; justify-content:center; padding:24px; color:var(--ink)}
+    .app{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 20px 40px rgba(16,114,74,.08);overflow:hidden;min-height:640px;display:flex;flex-direction:column}
+    .chat-area{flex:1;padding:12px;overflow:auto}
+    .msg{max-width:80%;padding:10px;margin:8px;border-radius:12px}
+    .msg.bot{background:#eefaf3;margin-right:auto}
+    .msg.user{background:#d4ffe8;margin-left:auto}
+    .input-row{display:flex;padding:12px;border-top:1px solid #eef6ee;background:#fff}
+    .input-row input{flex:1;padding:10px;border-radius:10px;border:1px solid #e6efe8}
+    .input-row button{margin-left:8px;padding:10px 12px;border-radius:10px;border:none;background:var(--brand1);color:#fff}
+    .footer{height:64px;border-top:1px solid #e7ece8;display:flex;align-items:center;justify-content:space-around;padding:8px 10px;background:#fff;}
+    .nav-btn{flex:1;text-align:center;font-size:.9rem;color:var(--muted);text-decoration:none}
+    .nav-btn span{display:block;font-size:18px}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="chat-area" id="chat">
+      <div class="msg bot">Olá! Eu sou o Assistente do PedalaComigo. Como posso ajudar?</div>
+    </div>
+
+    <div class="input-row">
+      <input id="txt" placeholder="Digite sua dúvida...">
+      <button id="send">Enviar</button>
+    </div>
+
+    <nav class="footer" id="footer"></nav>
+  </main>
+
+<script>
+  const footerItems = [
+    {id:'rotas', label:'Rotas', emoji:'📍', href:'rotas.html'},
+    {id:'videos', label:'Vídeos', emoji:'🎥', href:'videos.html'},
+    {id:'comunidade', label:'Comunidade', emoji:'👥', href:'comunidade.html'},
+    {id:'progresso', label:'Progresso', emoji:'📊', href:'progresso.html'},
+    {id:'panico', label:'Pânico', emoji:'🔴', href:'panico.html'}
+  ];
+  (function buildFooter(){ const footer=document.getElementById('footer'); const current='chatbot'; footerItems.forEach(it=>{ if(it.id===current) return; const a=document.createElement('a'); a.className='nav-btn'; a.href=it.href; a.innerHTML=`<span>${it.emoji}</span>${it.label}`; footer.appendChild(a); }); })();
+
+  const chat=document.getElementById('chat');
+  const txt=document.getElementById('txt');
+  document.getElementById('send').addEventListener('click', sendMsg);
+  txt.addEventListener('keydown', (e)=>{ if(e.key==='Enter') sendMsg(); });
+
+  function sendMsg(){
+    const v=txt.value.trim(); if(!v) return;
+    const user=document.createElement('div'); user.className='msg user'; user.textContent=v; chat.appendChild(user);
+    txt.value='';
+    setTimeout(()=>{ const bot=document.createElement('div'); bot.className='msg bot'; bot.textContent='Legal — posso te mostrar rotas, vídeos e lojas. O que prefere?'; chat.appendChild(bot); chat.scrollTop = chat.scrollHeight; },500);
+  }
+</script>
+</body>
+</html>

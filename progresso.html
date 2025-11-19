@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PedalaComigo — Progresso</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{--card:#fff;--border:#e5e7eb;--muted:#64748b;--ink:#1e293b;--accent:#14d4c5}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(1200px 800px at 80% -10%, #e8fff5, transparent 50%), linear-gradient(135deg,#f5fffb,#eafff3); display:flex; align-items:center; justify-content:center; padding:24px; color:var(--ink)}
+    .app{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 20px 40px rgba(16,114,74,.08);overflow:hidden;min-height:640px;display:flex;flex-direction:column}
+    .content{padding:14px;flex:1;overflow:auto}
+    .title{font-weight:700;font-size:1.1rem;margin-bottom:8px}
+    .graph{height:160px;border-radius:12px;background:linear-gradient(180deg, rgba(20,212,197,0.15), transparent);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    .stats{display:flex;justify-content:space-around;margin-top:14px}
+    .stat{text-align:center}
+    .stat .val{font-weight:800;font-size:1.2rem;color:var(--accent)}
+    .bar{height:8px;background:#e9f9f6;border-radius:8px;margin-top:10px;overflow:hidden}
+    .bar > .fill{height:100%;width:60%;background:var(--accent)}
+    .awards{display:flex;justify-content:space-around;margin-top:14px}
+    .award{text-align:center}
+    .footer{height:64px;border-top:1px solid #e7ece8;display:flex;align-items:center;justify-content:space-around;padding:8px 10px;background:#fff}
+    .nav-btn{flex:1;text-align:center;font-size:.9rem;color:var(--muted);text-decoration:none}
+    .nav-btn span{display:block;font-size:18px}
+.graph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="content">
+      <div class="title">Seu Progresso</div>
+
+<div class="graph">
+  <img src="assets/grafico_progresso.png" alt="Gráfico de progresso">
+</div>
+
+      <div class="stats">
+        <div class="stat"><div class="val">38,2 km</div><div style="color:var(--muted)">Distância</div></div>
+        <div class="stat"><div class="val">2h 15m</div><div style="color:var(--muted)">Tempo</div></div>
+        <div class="stat"><div class="val">756</div><div style="color:var(--muted)">Calorias</div></div>
+      </div>
+
+      <div style="margin-top:12px">Meta semanal: <strong>43 / 50 km</strong>
+        <div class="bar"><div class="fill"></div></div>
+      </div>
+
+      <div class="title" style="margin-top:16px">Conquistas</div>
+      <div class="awards">
+        <div class="award"><img src="assets/trophy.webp" style="width:48px"><div style="font-size:.9rem">Primeiro Passeio</div></div>
+        <div class="award"><img src="assets/check.webp" style="width:48px"><div style="font-size:.9rem">5 Passeios</div></div>
+        <div class="award"><img src="assets/medal.webp" style="width:48px"><div style="font-size:.9rem">50 km</div></div>
+      </div>
+    </div>
+
+    <nav class="footer" id="footer"></nav>
+  </main>
+
+<script>
+  const footerItems = [
+    {id:'rotas', label:'Rotas', emoji:'📍', href:'rotas.html'},
+    {id:'videos', label:'Vídeos', emoji:'🎥', href:'videos.html'},
+    {id:'chatbot', label:'Chatbot', emoji:'💬', href:'chatbot.html'},
+    {id:'comunidade', label:'Comunidade', emoji:'👥', href:'comunidade.html'},
+    {id:'panico', label:'Pânico', emoji:'🔴', href:'panico.html'}
+  ];
+  (function buildFooter(){ const footer=document.getElementById('footer'); const current='progresso'; footerItems.forEach(it=>{ if(it.id===current) return; const a=document.createElement('a'); a.className='nav-btn'; a.href=it.href; a.innerHTML=`<span>${it.emoji}</span>${it.label}`; footer.appendChild(a); }); })();
+</script>
+</body>
+</html>

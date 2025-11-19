@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PedalaComigo — Pânico</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{--card:#fff;--border:#e5e7eb;--muted:#64748b;--ink:#1e293b}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(1200px 800px at 80% -10%, #ffecec, transparent 50%), linear-gradient(135deg,#fff6f6,#fff1f1); display:flex; align-items:center; justify-content:center; padding:24px; color:var(--ink)}
+    .app{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.04);overflow:hidden;min-height:640px;display:flex;flex-direction:column;align-items:center}
+    .content{padding:24px;flex:1;width:100%}
+    .panic-btn{width:220px;height:220px;border-radius:50%;background:#e53e3e;color:#fff;display:flex;justify-content:center;align-items:center;font-weight:800;font-size:1.2rem;margin:36px auto;box-shadow:0 10px 30px rgba(229,62,62,.18)}
+    .actions{width:100%;margin-top:12px}
+    .actions button{width:100%;padding:12px;border-radius:12px;border:none;margin-top:10px}
+    .footer{height:64px;border-top:1px solid #e7ece8;display:flex;align-items:center;justify-content:space-around;padding:8px 10px;background:#fff;width:100%}
+    .nav-btn{flex:1;text-align:center;font-size:.9rem;color:var(--muted);text-decoration:none}
+    .nav-btn span{display:block;font-size:18px}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="content">
+      <div style="text-align:center;font-weight:700;font-size:1.1rem">Botão de Pânico</div>
+
+      <div class="panic-btn" id="panic">SEGURAR 3s</div>
+
+      <div class="actions">
+        <button style="background:#fff;border:1px solid #f1d1d1">Contato de Emergência</button>
+        <button style="background:#fff;border:1px solid #f1d1d1">Compartilhar Localização</button>
+        <button style="background:#fff;border:1px solid #f1d1d1">Ligar para 190</button>
+      </div>
+    </div>
+
+    <nav class="footer" id="footer"></nav>
+  </main>
+
+<script>
+  const footerItems = [
+    {id:'rotas', label:'Rotas', emoji:'📍', href:'rotas.html'},
+    {id:'videos', label:'Vídeos', emoji:'🎥', href:'videos.html'},
+    {id:'chatbot', label:'Chatbot', emoji:'💬', href:'chatbot.html'},
+    {id:'comunidade', label:'Comunidade', emoji:'👥', href:'comunidade.html'},
+    {id:'progresso', label:'Progresso', emoji:'📊', href:'progresso.html'},
+  ];
+  (function buildFooter(){ const footer=document.getElementById('footer'); const current='panico'; footerItems.forEach(it=>{ if(it.id===current) return; const a=document.createElement('a'); a.className='nav-btn'; a.href=it.href; a.innerHTML=`<span>${it.emoji}</span>${it.label}`; footer.appendChild(a); }); })();
+
+  // Hold-to-activate: 3 seconds
+  const panic = document.getElementById('panic');
+  let timer = null;
+  panic.addEventListener('mousedown', () => { panic.textContent='Segurando...'; timer = setTimeout(()=>{ panic.textContent='AÇÃO: ENVIADO'; alert('Alerta de pânico enviado (simulação)'); }, 3000); });
+  panic.addEventListener('mouseup', () => { clearTimeout(timer); panic.textContent='SEGURAR 3s'; });
+  panic.addEventListener('touchstart', () => { panic.textContent='Segurando...'; timer = setTimeout(()=>{ panic.textContent='AÇÃO: ENVIADO'; alert('Alerta de pânico enviado (simulação)'); }, 3000); });
+  panic.addEventListener('touchend', () => { clearTimeout(timer); panic.textContent='SEGURAR 3s'; });
+</script>
+</body>
+</html>

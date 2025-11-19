@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rotas e Mapas — PedalaComigo</title>
+
+<style>
+  /* --- MESMA BASE DO SEU LOGIN --- */
+  :root{
+    --brand1:#1fbf6a;
+    --brand2:#10724a;
+    --ink:#1e293b;
+    --muted:#6b7280;
+    --card:#fff;
+    --bg:#f4f7f5;
+    --border:#e5e7eb;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:#e8eee9;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+  }
+
+  .app{
+    width:100%;
+    max-width:380px;
+    background:white;
+    border-radius:22px;
+    border:1px solid #ddd;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    background:#111;
+    color:#fff;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:1.3rem;
+    font-weight:700;
+  }
+  .header img{
+    width:26px;
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content{
+    padding:20px;
+  }
+  h1{
+    margin:0;
+    font-size:1.8rem;
+    font-weight:700;
+  }
+  p.sub{
+    color:var(--muted);
+    font-size:0.95rem;
+    margin-top:6px;
+    margin-bottom:18px;
+  }
+
+  /* ---------- ROUTE CARD ---------- */
+  .route-card{
+    background:white;
+    border-radius:18px;
+    border:1px solid var(--border);
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.06);
+    margin-bottom:20px;
+  }
+  .route-card img{
+    width:100%;
+    display:block;
+  }
+  .route-info{
+    padding:15px;
+  }
+  .route-title{
+    font-size:1.1rem;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .route-sub{
+    font-size:0.95rem;
+    color:var(--muted);
+  }
+
+  /* ---------- LISTA SUGERIDA ---------- */
+  .list-title{
+    font-size:1.2rem;
+    font-weight:700;
+    margin:14px 0 10px;
+  }
+
+  .suggest{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:white;
+    padding:12px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    margin-bottom:10px;
+  }
+  .suggest img{
+    width:70px;
+    height:70px;
+    border-radius:10px;
+    object-fit:cover;
+  }
+  .s-details{
+    flex:1;
+  }
+  .s-title{
+    font-size:1rem;
+    font-weight:700;
+  }
+  .s-sub{
+    font-size:0.9rem;
+    color:var(--muted);
+  }
+
+  /* ---------- FOOTER NAV ---------- */
+  .footer{
+    display:flex;
+    justify-content:space-around;
+    padding:12px;
+    border-top:1px solid #ddd;
+    background:#fff;
+  }
+  .nav-item{
+    text-align:center;
+    font-size:0.8rem;
+    color:#666;
+    text-decoration:none;
+  }
+  .nav-item.active{
+    color:var(--brand2);
+    font-weight:700;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="assets/icon_bike.png" alt="">
+    pedalacomigo
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <h1>Rotas e Mapas</h1>
+    <p class="sub">Encontre as melhores rotas e locais seguros para pedalar</p>
+
+    <!-- CARD PRINCIPAL -->
+    <div class="route-card">
+      <img src="assets/rota_principal.png" alt="Mapa Rota Segura">
+      <div class="route-info">
+        <div class="route-title">Rota Segura</div>
+        <div class="route-sub">12,5 km • 45 min</div>
+      </div>
+    </div>
+
+    <div class="list-title">Rotas Sugeridas</div>
+
+    <!-- ROTA 1 -->
+    <div class="suggest">
+      <img src="assets/rota2.png" alt="">
+      <div class="s-details">
+        <div class="s-title">Rota Costeira</div>
+        <div class="s-sub">18,2 km • 1 h 10 min</div>
+      </div>
+    </div>
+
+    <!-- ROTA 2 -->
+    <div class="suggest">
+      <img src="assets/rota3.png" alt="">
+      <div class="s-details">
+        <div class="s-title">Rota Urbana</div>
+        <div class="s-sub">8,6 km • 30 min</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER (NAVIGATION) -->
+  <div class="footer">
+    <a class="nav-item active">Rotas</a>
+    <a href="videos.html" class="nav-item">Vídeos</a>
+    <a href="chatbot.html" class="nav-item">Chatbot</a>
+    <a href="comunidade.html" class="nav-item">Comunidade</a>
+    <a href="progresso.html" class="nav-item">Progresso</a>
+    <a href="panico.html" class="nav-item">Pânico</a>
+  </div>
+
+</div>
+
+</body>
+</html>
