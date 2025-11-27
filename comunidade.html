@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PedalaComigo — Comunidade</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{--card:#fff;--border:#e5e7eb;--muted:#64748b;--ink:#1e293b}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:radial-gradient(1200px 800px at 80% -10%, #e8fff5, transparent 50%), linear-gradient(135deg,#f5fffb,#eafff3); display:flex; align-items:center; justify-content:center; padding:24px; color:var(--ink)}
+    .app{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 20px 40px rgba(16,114,74,.08);overflow:hidden;min-height:640px;display:flex;flex-direction:column}
+    .content{padding:14px;flex:1;overflow:auto}
+    .title{font-weight:700;font-size:1.1rem;margin-bottom:8px}
+    .group{display:flex;gap:12px;align-items:center;background:#fff;padding:12px;border-radius:12px;margin-top:10px;border:1px solid #eef6ee}
+    .group img{width:48px;height:48px;border-radius:10px;object-fit:cover}
+    .footer{height:64px;border-top:1px solid #e7ece8;display:flex;align-items:center;justify-content:space-around;padding:8px 10px;background:#fff;}
+    .nav-btn{flex:1;text-align:center;font-size:.9rem;color:var(--muted);text-decoration:none}
+    .nav-btn span{display:block;font-size:18px}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="content">
+      <div class="title">Comunidade & Eventos</div>
+
+      <div class="group">
+        <img src="assets/user1.png" alt="">
+        <div>
+          <div style="font-weight:700">Passeio domingo</div>
+          <div style="color:var(--muted)">10:00 — Parque da Cidade</div>
+        </div>
+      </div>
+
+      <div class="group">
+        <img src="assets/user2.png" alt="">
+        <div>
+          <div style="font-weight:700">Reunião de Ciclistas</div>
+          <div style="color:var(--muted)">Quarta — 19:00</div>
+        </div>
+      </div>
+      <div class="group">
+        <img src="assets/user3.png" alt="">
+        <div>
+          <div style="font-weight:700">Reunião de Ciclistas Mulheres</div>
+          <div style="color:var(--muted)">Sexta — 11:00</div>
+        </div>
+      </div>
+
+	<div class="group">
+        <img src="assets/user4.png" alt="">
+        <div>
+          <div style="font-weight:700">Evento de Iberapuera</div>
+          <div style="color:var(--muted)">Sabado — 09:30</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <button style="width:100%;padding:12px;border-radius:12px;border:none;background:var(--brand1);color:#fff;font-weight:700">Criar Evento</button>
+      </div>
+    </div>
+
+    <nav class="footer" id="footer"></nav>
+  </main>
+
+<script>
+  const footerItems = [
+    {id:'rotas', label:'Rotas', emoji:'📍', href:'rotas.html'},
+    {id:'videos', label:'Vídeos', emoji:'🎥', href:'videos.html'},
+    {id:'chatbot', label:'Chatbot', emoji:'💬', href:'chatbot.html'},
+    {id:'progresso', label:'Progresso', emoji:'📊', href:'progresso.html'},
+    {id:'panico', label:'Pânico', emoji:'🔴', href:'panico.html'}
+  ];
+  (function buildFooter(){ const footer=document.getElementById('footer'); const current='comunidade'; footerItems.forEach(it=>{ if(it.id===current) return; const a=document.createElement('a'); a.className='nav-btn'; a.href=it.href; a.innerHTML=`<span>${it.emoji}</span>${it.label}`; footer.appendChild(a); }); })();
+</script>
+</body>
+</html>
